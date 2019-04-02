@@ -16,24 +16,24 @@
 
 // Principle 1
 // code example for Window Binding
-console.log(this); // or
-function niceCar(carModel){
-	console.log(this);
-	return carModel;
-}
-console.log(niceCar('Ferrari'));
+// console.log(this); // or
+// function niceCar(carModel){
+// 	console.log(this);
+// 	return carModel;
+// }
+// console.log(niceCar('Ferrari'));
 
 
-// Principle 2
-// code example for Implicit Binding
-const car = {
-	whoa: 'We are going really fast',
-	goFast: function(carType){
-		console.log(`Whoa, ${this.whoa}!`);
-	}
-}
+// // Principle 2
+// // code example for Implicit Binding
+// const car = {
+// 	whoa: 'We are going really fast',
+// 	goFast: function(carType){
+// 		console.log(`Whoa, ${this.whoa}!`);
+// 	}
+// }
 
-car.goFast('Lambo');
+// car.goFast('Lambo');
 
 // Principle 3
 // code example for New Binding
@@ -47,16 +47,22 @@ function Car(make, model, year, fun){
 };
 
 Car.prototype.goFast = function(carType){
-		whoa: 'We are going really fast',
-		console.log(`Whoa, ${this.whoa}!`);
+		console.log(`Whoa, this ${this.make} is amazingly fast!`);
+		console.log(this);
 }
 
+Car.prototype.goSlow = function(carType){
+		console.log(`Whoa, this ${this.make} is amazingly slow!`);
+		console.log(this);
+}
+
+console.log(Car);
 const IS350 = new Car('Lexus', 'IS350', 2011, true);
 IS350.goFast('IS350');
-console.log(IS350)
 
+const STI = new Car('Subaru', 'STI', 2014, false);
+STI.goSlow('STI');
 
 
 // Principle 4
-
 // code example for Explicit Binding
