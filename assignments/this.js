@@ -33,18 +33,27 @@ const car = {
 	}
 }
 
-car.goFast('Lambo')
+car.goFast('Lambo');
 
 // Principle 3
 // code example for New Binding
-function car(make, model, year, fun){
+
+
+function Car(make, model, year, fun){
 	this.make = make,
 	this.model = model,
 	this.year = year,
-	this.fun = false,
+	this.fun = fun
+};
+
+Car.prototype.goFast = function(carType){
+		whoa: 'We are going really fast',
+		console.log(`Whoa, ${this.whoa}!`);
 }
 
-
+const IS350 = new Car('Lexus', 'IS350', 2011, true);
+IS350.goFast('IS350');
+console.log(IS350)
 
 
 
