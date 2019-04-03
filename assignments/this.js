@@ -16,29 +16,28 @@
 
 // Principle 1
 // code example for Window Binding
-// console.log(this); // or
-// function niceCar(carModel){
-// 	console.log(this);
-// 	return carModel;
-// }
-// console.log(niceCar('Ferrari'));
+console.log(this); // or
+function niceCar(carModel){
+	console.log(this);
+	return carModel;
+}
+console.log(niceCar('Ferrari'));
 
 
 // // Principle 2
 // // code example for Implicit Binding
-// const car = {
-// 	whoa: 'We are going really fast',
-// 	goFast: function(carType){
-// 		console.log(`Whoa, ${this.whoa}!`);
-// 	}
-// }
+const car = {
+	whoa: 'We are going really fast',
+	goFast: function(carType){
+		console.log(`Whoa, ${this.whoa}!`);
+	}
+}
 
-// car.goFast('Lambo');
+car.goFast('Lambo');
+
 
 // Principle 3
 // code example for New Binding
-
-
 function Car(make, model, year, fun){
 	this.make = make,
 	this.model = model,
@@ -78,12 +77,6 @@ bigTruck.haul('heavy');
 
 // Principle 4
 // code example for Explicit Binding
-// IS350.goFast.call(STI);
-// bigTruck.haul.call(IS350, 'heavy');
+IS350.goFast.call(STI);
+bigTruck.haul.call(IS350, 'heavy');
 bigTruck.haul.apply(STI, ['light', 'slowly']);
-
-var numbers = [5, 6, 2, 13, 7];
-
-var max = Math.max.apply(null, numbers);
-
-// console.log(max);
