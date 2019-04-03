@@ -46,6 +46,16 @@ function Car(make, model, year, fun){
 	this.fun = fun
 };
 
+function Truck(make, model, year, haul){
+	this.make = make,
+	this.model = model,
+	this.year = year
+}
+
+Truck.prototype.haul = function(weight, speed){
+	console.log(`This ${this.make} can haul a ${weight} load, very ${speed}.`)
+}
+
 Car.prototype.goFast = function(carType){
 		console.log(`Whoa, this ${this.make} is amazingly fast!`);
 		console.log(this);
@@ -56,13 +66,24 @@ Car.prototype.goSlow = function(carType){
 		console.log(this);
 }
 
-console.log(Car);
 const IS350 = new Car('Lexus', 'IS350', 2011, true);
-IS350.goFast('IS350');
+// IS350.goFast('IS350');
 
 const STI = new Car('Subaru', 'STI', 2014, false);
-STI.goSlow('STI');
+// STI.goSlow('STI');
+
+const bigTruck = new Truck('Chevy', 'Duramax', 2015, 'Heavy');
+bigTruck.haul('heavy');
 
 
 // Principle 4
 // code example for Explicit Binding
+// IS350.goFast.call(STI);
+// bigTruck.haul.call(IS350, 'heavy');
+bigTruck.haul.apply(STI, ['light', 'slowly']);
+
+var numbers = [5, 6, 2, 13, 7];
+
+var max = Math.max.apply(null, numbers);
+
+// console.log(max);
