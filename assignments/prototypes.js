@@ -40,11 +40,44 @@
 */
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
-function Humanoid(){
-  this.team = team,
+//////////////////////////////////
+function GameObject(attrs){
+  this.createdAt = attrs.createdAt;
+  this.name = attrs.name;
+  this.dimensions = attrs.dimensions;
+}
+GameObject.prototype.destroy = function(){
+  return `${this.name} was removed from the game.`; 
 }
 
-  const mage = new Humanoid({78
+
+/////////////////////////////
+function CharacterStats(attrsChar){
+  GameObject.call(this, attrsChar);
+  this.healthPoints = attrsChar.healthPoints;
+}
+CharacterStats.prototype = Object.create(GameObject.prototype);
+
+CharacterStats.prototype.takeDamage = function(name){
+  return `${this.name} took damage`;
+}
+
+
+// //////////////////////////////////////
+function Humanoid(attrsHum){
+  CharacterStats.call(this, attrsHum);
+  this.team = attrsHum.team;
+  this.weapons = attrsHum.weapons;
+  this.language = attrsHum.language;
+}
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+
+Humanoid.prototype.greet = function(name, language){
+  return `${this.name} offers a greeting in ${this.language}`;
+}
+
+
+  const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
       length: 2,
@@ -59,7 +92,6 @@ function Humanoid(){
     ],
     language: 'Common Tongue',
   });
-
   const swordsman = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -110,3 +142,5 @@ function Humanoid(){
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+  

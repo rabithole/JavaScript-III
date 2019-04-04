@@ -38,39 +38,43 @@ car.goFast('Lambo');
 
 // Principle 3
 // code example for New Binding
+////////////// Top level inheritance.
 function Car(make, model, year, fun){
 	this.make = make,
 	this.model = model,
 	this.year = year,
 	this.fun = fun
 };
-
+/////////////// Object based off of Car object. 
 function Truck(make, model, year, haul){
 	this.make = make,
 	this.model = model,
 	this.year = year
 }
-
+//////////// Method added to the Truck object
 Truck.prototype.haul = function(weight, speed){
 	console.log(`This ${this.make} can haul a ${weight} load, very ${speed}.`)
 }
-
+///////////// Method added to the Car object. 
 Car.prototype.goFast = function(carType){
 		console.log(`Whoa, this ${this.make} is amazingly fast!`);
 		console.log(this);
 }
-
+//////////// Method added to the Car object. 
 Car.prototype.goSlow = function(carType){
 		console.log(`Whoa, this ${this.make} is amazingly slow!`);
 		console.log(this);
 }
 
+///////// Instance of a car. 
 const IS350 = new Car('Lexus', 'IS350', 2011, true);
 // IS350.goFast('IS350');
 
+///////// Instance of a car. 
 const STI = new Car('Subaru', 'STI', 2014, false);
 // STI.goSlow('STI');
 
+///////// Instance of a truck. 
 const bigTruck = new Truck('Chevy', 'Duramax', 2015, 'Heavy');
 bigTruck.haul('heavy');
 
